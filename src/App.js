@@ -21,7 +21,7 @@ class App extends Component {
         completed: false
       },
     ], };
-    markComplete = (id) => {
+  markComplete = (id) => {
       this.setState({ todos: this.state.todos.map(todo => {
         if(todo.id === id) {
           todo.completed = !todo.completed
@@ -29,12 +29,17 @@ class App extends Component {
         return todo;
       }) });
     };
+  delTodo = (id) => {
+    this.setState({ todos: [...this.state.todos.filter(todo => todo.id
+    !== id)] });
+  }
 
   render() {
     return (
       <div className="App">
         <header className="App-header">
-        <Todos todos= { this.state.todos } markComplete={this.markComplete}/>
+        <Todos todos= { this.state.todos } markComplete={this.markComplete}
+        delTodo={this.delTodo} />
         </header>
       </div>
     );
