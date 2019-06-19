@@ -1,6 +1,12 @@
 import React, { Component} from 'react';
 
 class Addtodo extends Component {
+  state = {
+    title: ''
+  };
+
+  titleChange = (e) => this.setState ({ [e.target.name]: e.target.value });
+
   render() {
     return (
     <form style={{ display: 'flex' }}>
@@ -9,6 +15,8 @@ class Addtodo extends Component {
         name='title'
         style={{ flex: '10', poadding: '10px' }}
         placeholder='Add a task'
+        value= {this.state.title}
+        onChange={this.titleChange}
       />
       <input
       type='submit'
