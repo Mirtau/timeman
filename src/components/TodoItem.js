@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
 class TodoItem extends Component {
   getStyle = () => {
@@ -11,12 +11,15 @@ class TodoItem extends Component {
       'line-through' : "none"
     };
   };
+
   render() {
+    const { id, title } = this.props.todo;
     return (
       <div style = { this.getStyle() } >
         <p>
-          <input type="checkbox"/> {'  '}
-          { this.props.todo.title }
+          <input type="checkbox" onChange={this.props.markComplete.bind
+            (this, id)} /> {'  '}
+          { title }
         </p>
       </div>
     );

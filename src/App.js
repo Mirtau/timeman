@@ -20,13 +20,21 @@ class App extends Component {
         title: 'meditate',
         completed: false
       },
-    ]
-  };
+    ], };
+    markComplete = (id) => {
+      this.setState({ todos: this.state.todos.map(todo => {
+        if(todo.id === id) {
+          todo.completed = !todo.completed
+        }
+        return todo;
+      }) });
+    };
+
   render() {
     return (
       <div className="App">
         <header className="App-header">
-        <Todos todos= { this.state.todos }/>
+        <Todos todos= { this.state.todos } markComplete={this.markComplete}/>
         </header>
       </div>
     );
