@@ -6,6 +6,7 @@
     "@nomoreanalog/react-scripts-eslintless": "2.1.10",
     "babel": "^6.23.0",
     "babel-plugin-styled-components": "^1.10.1",
+    "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   },
