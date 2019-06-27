@@ -1,24 +1,27 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
+import uuid from 'uuid'
 import Header from './components/Header'
 import Addtodo from './components/Addtodo'
 import Todos from './components/Todos';
+
 
 class App extends Component {
   state = {
     todos: [
       {
-        id: 1,
+        id: uuid.v4(),
         title: 'code for 3 hours',
         completed: false
       },
       {
-        id: 2,
+        id: uuid.v4(),
         title: 'exercise',
         completed: false
       },
       {
-        id: 3,
+        id: uuid.v4(),
         title: 'meditate',
         completed: false
       },
@@ -36,20 +39,27 @@ class App extends Component {
     !== id)] });
   };
   addTodo = (title) => {
-    console.log(title);
+    const newTodo ={
+      id: uuid.v4(),
+      title,
+      completed: false
+    };
+    this.setState({ todos: [...this.state.todos, newTodo]});
   }
 
 
   render() {
     return (
-      <div className="App">
-        <header className="container">
-        <Header />
-        <Addtodo addTodo={this.addTodo} />
-        <Todos todos= { this.state.todos } markComplete={this.markComplete}
-        delTodo={this.delTodo} />
-        </header>
-      </div>
+      <Router>
+        <div className="App">
+          <header className="container">
+          <Header />
+          <Addtodo addTodo={this.addTodo} />
+          <Todos todos= { this.state.todos } markComplete={this.markComplete}
+          delTodo={this.delTodo} />
+          </header>
+        </div>
+      </Router>
     );
   }
 }
